@@ -135,7 +135,7 @@ CREATE TABLE ContentCreator
     state_residence         VARCHAR(15)     NOT NULL,
     country_res             VARCHAR(20)     NOT NULL,
     mobile                  CHAR(12)        NOT NULL        UNIQUE, --Assuming that no user can have the same phone as another
-    tier_level              NUMBER(1)       NOT NULL    --Assuming that the tier level is 1,2,3,4...9                   
+    tier_level              VARCHAR(1)      NOT NULL    --Assuming that the tier level is 1,2,3,4...9, with 1 being free                   
 );
 
 
@@ -145,7 +145,7 @@ CREATE TABLE Video
     ContentCreator_id   NUMBER(7)       NOT NULL        REFERENCES ContentCreator(ContentCreator_id),
     title               VARCHAR(100)    NOT NULL        UNIQUE,
     subtitle            VARCHAR(100)    NOT NULL,
-    upload_date         DATE            DEFAULT SYSDATE, --Default will be the day it is created
+    upload_date         DATE            DEFAULT SYSTIMESTAMP, --Default will be the day it is created
     video_length        NUMBER(5)       NOT NULL, --Length in Seconds (e.g. a minute video = 60)
     video_size          NUMBER(4)       NOT NULL, --Size in mb (e.g. 2.3gb = 2300), assuming nothing over 9.99gb
     views               NUMBER(8)       DEFAULT 0, --Video will default to a view count 0, like count 0 , and revenue 0
@@ -189,7 +189,7 @@ CREATE TABLE Comments
     comment_id          NUMBER(7)       NOT NULL,
     video_id            NUMBER(7)       NOT NULL,
     user_id             NUMBER(7)       NOT NULL,
-    time_date           DATE            DEFAULT SYSDATE, --Timestamp for the comment, default to today
+    time_date           DATE            DEFAULT SYSTIMESTAMP, --Timestamp for the comment, default to today
     comment_body        VARCHAR(200)    NOT NULL
 );
 
