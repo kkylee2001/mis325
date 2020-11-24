@@ -40,5 +40,3 @@ CREATE USER tej_anand IDENTIFIED BY password_123!;
 GRANT faculty to tej_anand;
 
 REVOKE faculty from tej_anand;
-
-
